@@ -2,9 +2,17 @@ name: Android Build
 
 # Builds a debug APK on every push/PR so you can grab it from the
 # Actions run's "Artifacts" section without building locally.
-# This project doesn't commit a Gradle wrapper jar (binary file), so
-# the workflow installs a matching Gradle directly instead of using
-# ./gradlew — see the "Set up Gradle" step below.
+#
+# No android-actions/setup-android step: GitHub's ubuntu-latest
+# runners already ship a full Android SDK preinstalled (ANDROID_HOME
+# is already set, sdkmanager is already on PATH), and that action's
+# own license/package-install step is currently broken upstream (it
+# tries to install a legacy 'tools' package Google removed from the
+# repository). Just using the preinstalled SDK avoids the bug entirely.
+#
+# This project also doesn't commit a Gradle wrapper jar (binary
+# file), so this installs a matching Gradle directly instead of
+# using ./gradlew.
 
 on:
   push:
@@ -25,8 +33,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses > /dev/null || true
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
