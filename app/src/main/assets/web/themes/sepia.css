@@ -1,0 +1,19 @@
+/* Sepia — soft warm paper, less contrast than Mushaf */
+:root {
+  --bg:          #EDE0C8;
+  --panel:       #F5EBD5;
+  --panel-alt:   #E5D5B8;
+  --entry-bg:    #FFF8E8;
+  --border:      #C9B48A;
+  --ink:         #3B3220;
+  --ink-dim:     #7A6A50;
+  --accent:      #A07020;
+  --accent-hi:   #C09030;
+  --accent-fg:   #FFF8E8;
+  --sel:         #DCC9A0;
+  --status-bg:   #E5D5B8;
+  --shadow:      0 2px 6px rgba(160,112,32,.1);
+  --radius:      6px;
+  --arabic-size: 26px;
+  --ui-size:     14px;
+}

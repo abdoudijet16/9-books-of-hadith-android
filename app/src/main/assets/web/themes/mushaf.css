@@ -1,0 +1,19 @@
+/* Mushaf — cream/gold manuscript theme (default) */
+:root {
+  --bg:          #F5ECD7;
+  --panel:       #FBF6E7;
+  --panel-alt:   #F0E5C8;
+  --entry-bg:    #FFFCF2;
+  --border:      #D9C89A;
+  --ink:         #3A2E1F;
+  --ink-dim:     #7A6A4F;
+  --accent:      #B8860B;
+  --accent-hi:   #D4A017;
+  --accent-fg:   #FFFCF2;
+  --sel:         #E8D9A8;
+  --status-bg:   #EFE3C4;
+  --shadow:      0 2px 8px rgba(184,134,11,.08);
+  --radius:      8px;
+  --arabic-size: 26px;
+  --ui-size:     14px;
+}

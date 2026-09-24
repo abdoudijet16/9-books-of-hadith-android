@@ -1,0 +1,19 @@
+/* Night — warm dark, easy on eyes for late reading */
+:root {
+  --bg:          #1A1613;
+  --panel:       #241E19;
+  --panel-alt:   #2E2620;
+  --entry-bg:    #2A231D;
+  --border:      #3A2E1F;
+  --ink:         #E8DCC4;
+  --ink-dim:     #9A8B72;
+  --accent:      #D4A017;
+  --accent-hi:   #E8B93A;
+  --accent-fg:   #1A1613;
+  --sel:         #4A3A22;
+  --status-bg:   #241E19;
+  --shadow:      0 2px 12px rgba(0,0,0,.4);
+  --radius:      8px;
+  --arabic-size: 26px;
+  --ui-size:     14px;
+}

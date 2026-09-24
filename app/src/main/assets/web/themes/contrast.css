@@ -1,0 +1,19 @@
+/* High contrast — accessibility, large text, pure black/white */
+:root {
+  --bg:          #FFFFFF;
+  --panel:       #FFFFFF;
+  --panel-alt:   #F0F0F0;
+  --entry-bg:    #FFFFFF;
+  --border:      #000000;
+  --ink:         #000000;
+  --ink-dim:     #333333;
+  --accent:      #0000CC;
+  --accent-hi:   #0000FF;
+  --accent-fg:   #FFFFFF;
+  --sel:         #FFFF00;
+  --status-bg:   #F0F0F0;
+  --shadow:      none;
+  --radius:      2px;
+  --arabic-size: 32px;
+  --ui-size:     16px;
+}

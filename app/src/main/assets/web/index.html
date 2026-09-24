@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>موسوعة الحديث</title>
+  <link id="theme-link" rel="stylesheet" href="themes/mushaf.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top app bar: back arrow (shown when drilled in) + screen title + theme toggle -->
+  <header class="appbar">
+    <button id="back-btn" class="icon-btn" aria-label="رجوع" hidden>‹</button>
+    <h1 id="appbar-title">موسوعة الحديث</h1>
+    <button id="theme-btn" class="icon-btn" aria-label="المظهر">🎨</button>
+  </header>
+
+  <!-- Single scrollable screen area; app.js swaps #screen innerHTML -->
+  <main id="screen" class="screen"></main>
+
+  <!-- Bottom tab bar, 3 tabs like the reference app: Books / Search / Favorites -->
+  <nav class="tabbar">
+    <button class="tab-btn active" data-tab="books">
+      <span class="tab-icon">📚</span><span>الكتب</span>
+    </button>
+    <button class="tab-btn" data-tab="search">
+      <span class="tab-icon">🔍</span><span>البحث</span>
+    </button>
+    <button class="tab-btn" data-tab="favorites">
+      <span class="tab-icon">⭐</span><span>المفضلة</span>
+    </button>
+  </nav>
+
+  <!-- Theme picker sheet -->
+  <div id="theme-sheet" class="sheet-overlay" hidden>
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <h3>اختر المظهر</h3>
+      <button class="sheet-option" data-theme="mushaf">🟡 المشهف (كريمي)</button>
+      <button class="sheet-option" data-theme="dark">⚫ الليلي</button>
+      <button class="sheet-option" data-theme="sepia">🟤 بني فاتح</button>
+      <button class="sheet-option" data-theme="contrast">⬛ تباين عالي</button>
+      <div class="sheet-row">
+        <span>حجم النص العربي</span>
+        <input type="range" id="font-size" min="18" max="40" value="26">
+      </div>
+      <button class="sheet-close" id="sheet-close-btn">إغلاق</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

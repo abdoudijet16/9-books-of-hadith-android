@@ -1,0 +1,208 @@
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+@font-face {
+  font-family: 'Amiri';
+  src: url('../fonts/Amiri-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Amiri';
+  src: url('../fonts/Amiri-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  background: var(--bg); color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  font-size: var(--ui-size);
+  overscroll-behavior: none;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+/* ---------- App bar ---------- */
+.appbar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+  padding-top: max(10px, env(safe-area-inset-top));
+}
+.appbar h1 {
+  flex: 1; margin: 0; font-size: 1.05em; font-weight: 700;
+  color: var(--accent);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  text-align: center;
+}
+.icon-btn {
+  background: none; border: none; font-size: 1.4em; line-height: 1;
+  color: var(--ink); padding: 4px 8px; border-radius: var(--radius);
+  cursor: pointer;
+}
+.icon-btn:active { background: var(--sel); }
+
+/* ---------- Screen area ---------- */
+.screen {
+  overflow-y: auto;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.empty {
+  text-align: center; color: var(--ink-dim);
+  padding: 60px 20px; font-style: italic;
+}
+
+/* ---------- Bottom tab bar ---------- */
+.tabbar {
+  display: flex;
+  background: var(--panel);
+  border-top: 1px solid var(--border);
+  padding-bottom: max(4px, env(safe-area-inset-bottom));
+}
+.tab-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  background: none; border: none; color: var(--ink-dim);
+  padding: 8px 0 4px; font-size: 0.75em; cursor: pointer;
+}
+.tab-btn .tab-icon { font-size: 1.4em; }
+.tab-btn.active { color: var(--accent); font-weight: 700; }
+
+/* ---------- Books list (root) ---------- */
+.book-list { display: flex; flex-direction: column; gap: 8px; }
+.book-card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 14px 16px; cursor: pointer;
+}
+.book-card-ar {
+  display: block; font-family: 'Amiri', serif; font-size: 1.3em;
+  font-weight: 700; color: var(--accent); text-align: right;
+}
+.book-card-en { display: block; color: var(--ink-dim); font-size: 0.85em; }
+.book-card-author { display: block; color: var(--ink-dim); font-size: 0.8em; margin-top: 2px; }
+
+/* ---------- Chapter list ---------- */
+.chapter-list { display: flex; flex-direction: column; gap: 4px; }
+.chapter-row {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--panel); border-radius: var(--radius);
+  padding: 12px 14px; cursor: pointer;
+  border-inline-start: 3px solid transparent;
+}
+.chapter-row:active { border-inline-start-color: var(--accent); background: var(--panel-alt); }
+.chapter-num {
+  min-width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-fg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8em; font-weight: 700; flex-shrink: 0;
+}
+.chapter-title { font-family: 'Amiri', serif; font-size: 1.05em; }
+
+/* ---------- Hadith list rows (search / chapter / favorites) ---------- */
+.hadith-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.hadith-row {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 10px 12px;
+}
+.hadith-row-main { flex: 1; min-width: 0; cursor: pointer; }
+.hadith-row-ref {
+  display: block; color: var(--accent); font-weight: 700; font-size: 0.8em; margin-bottom: 2px;
+}
+.hadith-row-snippet {
+  display: block; color: var(--ink-dim);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.hadith-row-snippet.ar { font-family: 'Amiri', serif; text-align: right; font-size: 1.05em; }
+.star-btn {
+  background: none; border: none; font-size: 1.5em; line-height: 1;
+  color: var(--ink-dim); flex-shrink: 0; padding: 4px; cursor: pointer;
+}
+.star-btn.on { color: var(--accent); }
+
+/* ---------- Hadith reader card ---------- */
+.hadith-card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 20px 18px;
+}
+.hadith-card-book {
+  font-family: 'Amiri', serif; font-size: 1.35em; font-weight: 700;
+  color: var(--accent); text-align: right;
+}
+.hadith-card-meta {
+  font-size: 0.82em; color: var(--ink-dim); text-align: center;
+  padding: 8px 0; margin: 10px 0 16px;
+  border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);
+}
+.hadith-arabic {
+  font-family: 'Amiri', serif; font-size: var(--arabic-size);
+  line-height: 2; direction: rtl; text-align: right;
+  margin: 0 0 18px; unicode-bidi: isolate;
+}
+.hadith-narrator { font-style: italic; color: var(--ink-dim); font-size: 0.9em; margin: 0 0 6px; }
+.hadith-english { direction: ltr; text-align: left; line-height: 1.6; margin: 0 0 16px; }
+.fav-toggle-btn {
+  width: 100%; padding: 12px; border-radius: var(--radius);
+  border: 1px solid var(--accent); background: var(--panel-alt);
+  color: var(--accent); font-weight: 700; font-size: 1em; cursor: pointer;
+}
+.fav-toggle-btn.on { background: var(--accent); color: var(--accent-fg); }
+
+/* ---------- Search screen ---------- */
+.search-form { display: flex; flex-direction: column; gap: 10px; }
+.search-input, .advanced-grid input, .advanced-grid select {
+  width: 100%; background: var(--entry-bg); color: var(--ink);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px; font-size: 1em; font-family: inherit;
+}
+.primary-btn, .ghost-btn {
+  width: 100%; padding: 12px; border-radius: var(--radius);
+  font-size: 1em; font-weight: 700; cursor: pointer;
+}
+.primary-btn { background: var(--accent); color: var(--accent-fg); border: none; }
+.ghost-btn { background: var(--panel); color: var(--ink); border: 1px solid var(--border); }
+.advanced-details {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 8px 12px;
+}
+.advanced-details summary { cursor: pointer; color: var(--ink-dim); padding: 6px 0; }
+.advanced-grid { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.advanced-grid label { font-size: 0.85em; color: var(--ink-dim); }
+
+/* ---------- Theme bottom sheet ---------- */
+.sheet-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  display: flex; align-items: flex-end; z-index: 50;
+}
+.sheet {
+  width: 100%; background: var(--panel);
+  border-radius: 16px 16px 0 0; padding: 12px 20px 24px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+.sheet-handle {
+  width: 40px; height: 4px; background: var(--border);
+  border-radius: 2px; margin: 4px auto 12px;
+}
+.sheet h3 { margin: 0 0 12px; text-align: center; }
+.sheet-option {
+  display: block; width: 100%; text-align: right;
+  background: var(--panel-alt); border: none; border-radius: var(--radius);
+  padding: 12px; margin-bottom: 8px; font-size: 1em; cursor: pointer; color: var(--ink);
+}
+.sheet-row { display: flex; align-items: center; justify-content: space-between; margin: 12px 0; gap: 12px; }
+.sheet-row input[type="range"] { flex: 1; accent-color: var(--accent); }
+.sheet-close {
+  width: 100%; padding: 10px; margin-top: 4px;
+  background: none; border: 1px solid var(--border); border-radius: var(--radius);
+  color: var(--ink-dim); cursor: pointer;
+}
+
+/* ---------- Scrollbar (thin, for devices that show one) ---------- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
