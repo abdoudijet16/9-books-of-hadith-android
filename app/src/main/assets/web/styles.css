@@ -180,6 +180,13 @@ body {
   position: fixed; inset: 0; background: rgba(0,0,0,0.45);
   display: flex; align-items: flex-end; z-index: 50;
 }
+/* `display: flex` above beats the browser's built-in [hidden]{display:none}
+   rule at equal specificity, since author styles win ties over the
+   user-agent stylesheet — so without this, the sheet shows even while
+   `hidden` is set and blocks the whole screen behind it. */
+.sheet-overlay[hidden] {
+  display: none;
+}
 .sheet {
   width: 100%; background: var(--panel);
   border-radius: 16px 16px 0 0; padding: 12px 20px 24px;
